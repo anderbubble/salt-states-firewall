@@ -8,15 +8,11 @@ specifically is designed to manage firewall rules.
 .. code-block:: yaml
 
     httpd:
-      firewall.managed:
-        - table: filter
-        - chain: INPUT
-        - jump: ACCEPT
-        - match: state
-        - connstate: NEW
-        - dport: 80
-        - proto: tcp
-        - sport: 1025:65535
+      firewall_rule.managed:
+        - action: ACCEPT
+        - state_: NEW
+        - dports: 80
+        - protocol: tcp
 
 '''
 
@@ -39,11 +35,6 @@ def managed (
     name
         A user-defined name to call this rule by in another part of a state or
         formula. This should not be an actual rule.
-
-    All other arguments are passed in with the same name as the long option
-    that would normally be used for iptables, with one exception: `--state` is
-    specified as `connstate` instead of `state` (not to be confused with
-    `ctstate`).
     '''
     ret = {'name': name,
            'changes': {},
