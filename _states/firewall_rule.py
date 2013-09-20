@@ -120,19 +120,6 @@ def _get_rulenum (table, chain, comment):
     return rulenum
 
 
-SALT_ARGS = ('__id__', 'fun', 'state', '__env__', '__sls__',
-             'order', 'watch', 'watch_in', 'require', 'require_in',
-             'prereq', 'prereq_in')
-
-
-def _filter_salt_args (kwargs):
-    retargs = kwargs.copy()
-    for arg in SALT_ARGS:
-        if arg in retargs:
-            del retargs[arg]
-    return retargs
-
-
 def _process_arg (arg, value):
     if value is None:
         return ()
