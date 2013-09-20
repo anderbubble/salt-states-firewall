@@ -9,7 +9,7 @@ specifically is designed to manage firewall rules.
 
     httpd:
       firewall_rule.managed:
-        - action: ACCEPT
+        - action: accept
         - state_: NEW
         - dports: 80
         - protocol: tcp
